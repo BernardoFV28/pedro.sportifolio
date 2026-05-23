@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | pedro paulo</title>
+    <style>/* Variáveis de Tema */
+:root {
+    --primary: #0A192F; /* Azul Noturno */
+    --secondary: #D32F2F; /* Vermelho Faixa/Japão */
+    --gold: #FFD700;
+    --text-main: #333333;
+    --text-light: #666666;
+    --bg-light: #F4F7F6;
+    --white: #ffffff;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset e Tipografia */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+/* Utilitários */
+.text-center { text-align: center; }
+.text-white { color: var(--white); }
+.mt-20 { margin-top: 20px; }
+.bg-dark { background-color: var(--primary); }
+.bg-light { background-color: var(--white); }
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-title span { color: var(--secondary); }
+.section-title.left { text-align: left; margin-bottom: 30px; }
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.btn-primary {
+    background-color: var(--secondary);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: #B71C1C;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-outline:hover {
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+/* Header */
+header {
+    background-color: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.logo span { color: var(--secondary); }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover { color: var(--secondary); }
+
+.btn-nav {
+    background-color: var(--secondary);
+    padding: 8px 20px;
+    border-radius: 4px;
+}
+
+.btn-nav:hover {
+    background-color: var(--white);
+    color: var(--primary) !important;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('pps3.jpg') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, rgba(10, 25, 47, 0.9), rgba(10, 25, 47, 0.4));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    color: var(--white);
+    max-width: 800px;
+    text-align: center;
+}
+
+.tag {
+    background-color: var(--secondary);
+    padding: 5px 15px;
+    font-size: 0.8rem;
+    border-radius: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.hero-content h2 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.highlight { color: var(--secondary); }
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #e0e0e0;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Biografia Grid */
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.bio-image { position: relative; }
+
+.bio-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    background-color: var(--secondary);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(211,47,47,0.3);
+}
+
+.experience-badge .number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Montserrat';
+    line-height: 1;
+}
+
+.bio-text p {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+/* Lista de Conquistas */
+.achievements-list { list-style: none; margin-top: 20px; }
+
+.achievements-list li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    background: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: var(--transition);
+}
+
+.achievements-list li:hover { transform: translateX(10px); }
+
+.medal {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.medal.gold { background: linear-gradient(135deg, #FFD700, #F57F17); }
+.medal.silver { background: linear-gradient(135deg, #E0E0E0, #9E9E9E); }
+.medal.bronze { background: linear-gradient(135deg, #CD7F32, #8D6E63); }
+
+/* Filosofia Cards */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: var(--transition);
+}
+
+.card:hover {
+    background-color: var(--secondary);
+    transform: translateY(-10px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
+.card:hover .card-icon { color: var(--white); }
+.card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+.card p { color: #d0d0d0; }
+
+/* Galeria */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+}
+
+.gallery-item img {
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(211, 47, 47, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.gallery-overlay i {
+    color: var(--white);
+    font-size: 2.5rem;
+    transform: scale(0);
+    transition: var(--transition);
+}
+
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-item:hover .gallery-overlay i { transform: scale(1); }
+
+/* Lightbox */
+.lightbox {
+    display: none; position: fixed; z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(5px);
+}
+
+.lightbox-content {
+    margin: auto; display: block;
+    max-width: 90%; max-height: 85vh;
+    margin-top: 5vh;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.fechar {
+    position: absolute; top: 30px; right: 40px;
+    color: var(--white); font-size: 50px; cursor: pointer;
+}
+
+.fechar:hover { color: var(--secondary); }
+
+.contact-container {
+    max-width: 950px;
+}
+
+.contact-lead {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.contact-card {
+    background-color: var(--bg-light);
+    padding: 40px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: var(--transition);
+    border-top: 4px solid var(--primary);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-top-color: var(--secondary);
+}
+
+.contact-card i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+
+.contact-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: var(--text-light);
+    font-weight: 600;
+    word-break: break-all; /* Garante que e-mails longos não quebrem o layout no mobile */
+}
+
+/* Footer */
+footer {
+    background-color: #050d1a;
+    color: var(--white);
+    text-align: center;
+    padding: 40px 0;
+}
+
+.social-links { margin-bottom: 20px; }
+.social-links a {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin: 0 15px;
+    transition: var(--transition);
+}
+.social-links a:hover { color: var(--secondary); transform: translateY(-3px); display: inline-block;}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .bio-grid { grid-template-columns: 1fr; }
+    .hero-content h2 { font-size: 2.8rem; }
+    .cards-grid, .contact-cards-grid { grid-template-columns: 1fr; }
+    .experience-badge { bottom: 10px; right: 10px; padding: 15px; }
+    .nav-links { display: none; }
+}</style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Ícones FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header id="header">
+        <div class="container header-container">
+            <h1 class="logo">PEDRO <span> Paulo dos Santos</span></h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#biografia">História</a></li>
+                    <li><a href="#filosofia">Filosofia</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato" class="btn-nav">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Hero (Capa) -->
+    <section id="inicio" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="tag">Associação de Judô - AJJIR</span>
+            <h2>venha conhecer a minha <span class="highlight">HISTÓRIA></h2>
+            <p>Construindo um legado dentro e fora dos tatames. Preparado para os próximos desafios nacionais.</p>
+            <div class="hero-buttons">
+                <a href="#biografia" class="btn btn-primary">Minha Trajetória</a>
+                <a href="#galeria" class="btn btn-outline">Ver Fotos <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Biografia e Conquistas -->
+    <section id="biografia" class="section">
+        <div class="container bio-grid">
+            <div class="bio-image reveal">
+                <img src="pps1.jpg">
+                <div class="experience-badge">
+                    <span class="number">5</span>
+                    <span class="text">Anos de<br>Tatame</span>
+                </div>
+            </div>
+            <div class="bio-text reveal">
+                <h2 class="section-title left">Forjado na <span>Resiliência</span></h2>
+                <p>O judô não é apenas um esporte para mim, é o pilar do meu caráter. Representar a <strong>AJJIR</strong> significa carregar o peso de uma equipe focada na excelência. Cada queda no treino é uma preparação para ficar de pé nas maiores competições.</p>
+                <p>Busco constantemente o <em>Ippon</em> perfeito, não apenas nas lutas, mas em todas as áreas da vida.</p>
+                
+                <h3 class="mt-20"><i class="fa-solid fa-trophy" style="color: var(--gold);"></i> Títulos Recentes</h3>
+                <ul class="achievements-list">
+                    <li>
+                        <div class="medal gold"><i class="fa-solid fa-medal"></i></div>
+                        <div>
+                            <h4>mais de 13 campeonatos</h4>
+                            <p>proxima luta 27/06</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="medal silver"><i class="fa-solid fa-medal"></i></div>
+                        <div>
+                            <h4>3 lugar</h4>
+                            <p>Copa Cidade de Valença</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="medal bronze"><i class="fa-solid fa-star"></i></div>
+                        <div>
+                            <h4>Faixa amarela de Judô</h4>
+                            <p>conquistada apos 5 longos Anos</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Filosofia e Especialidades -->
+    <section id="filosofia" class="section bg-dark text-white">
+        <div class="container">
+            <h2 class="section-title text-center text-white"></h2>
+            <div class="cards-grid">
+                <div class="card reveal">
+                    <i class="fa-solid fa-yin-yang card-icon"></i>
+                    <h3></h3>
+                    <p>Progresso e benefício mútuo. Crescemos juntos no dojô para sermos fortes no mundo.</p>
+                </div>
+                <div class="card reveal">
+                    <i class="fa-solid fa-bolt card-icon"></i>
+                    <h3>Seiryoku Zenyo</h3>
+                    <p>Máxima eficiência com o mínimo de esforço. O uso inteligente da energia física e mental.</p>
+                </div>
+                <div class="card reveal">
+                    <i class="fa-solid fa-hand-fist card-icon"></i>
+                    <h3>Nage-waza</h3>
+                    <p>Especialista em técnicas de projeção, com foco em <em>Uchi-mata</em> e <em>Osoto-gari</em>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Galeria -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Momentos no <span>Tatame</span></h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item" onclick="abrirLightbox(this)">
+                    <img src="pps1.jpg">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                <div class="gallery-item" onclick="abrirLightbox(this)">
+                    <img src="pps2.jpg">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div><div class="gallery-item" onclick="abrirLightbox(this)">
+                    <img src="pps3.jpg">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div><div class="gallery-item" onclick="abrirLightbox(this)">
+                    <img src="pps4.jpg">
+                    <div class="gallery-overlay"><i class="fa-solid fa-expand"></i></div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox (Zoom da imagem) -->
+    <div id="lightbox" class="lightbox" onclick="fecharLightbox(event)">
+        <span class="fechar">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="">
+    </div>
+
+    <!-- Seção Contato (Sem Formulário) -->
+    <section id="contato" class="section bg-light">
+        <div class="container contact-container text-center">
+            <h2 class="section-title">Entre em <span>Contato</span></h2>
+            <p class="contact-lead">como me contatar?</p>
+            
+            <div class="contact-cards-grid reveal">
+                
+                <div class="contact-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>Telefone / WhatsApp</h3>
+                    <p>+55 32 8723-0645</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Onde Treino</h3>
+                    <p>Centro de Treinamento AJJIR</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="pedr_osantossz"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2026 pedro paulo AJJIR. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js">
+function abrirLightbox(elemento) {
+    var imgSrc = elemento.querySelector('img').src;
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    
+    lightbox.style.display = "flex"; 
+    lightboxImg.src = imgSrc;
+}
+
+function fecharLightbox(event) {
+    if(event.target.id === 'lightbox' || event.target.className === 'fechar') {
+        document.getElementById('lightbox').style.display = "none";
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        document.getElementById('lightbox').style.display = "none";
+    }
+});
+
+// Animação de Revelação ao rolar a página (Scroll Reveal)
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 100;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+document.head.insertAdjacentHTML("beforeend", `<style>
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>`);
+
+window.addEventListener("scroll", reveal);
+reveal();
+</script>
+</body>
+</html>
